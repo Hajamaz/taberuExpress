@@ -1,0 +1,486 @@
+<%- layout('layouts/boilerplate') %>
+
+
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+
+                <form class="row g-3 needs-validation formRow" novalidate action="/process_booking" method="post">
+                    <div class="mb-4 formList">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-4 formList">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-6 formList">
+                        <label for="guests" class="form-label">Number of Guests:</label>
+                        <input type="number" name="guests" class="form-control" required min="1" max="6" id="nrGuests"
+                            oninput="guestAmount()" value="1">
+                        <div class="invalid-feedback">
+                            For larger bookings please call us: 01865434100
+                        </div>
+                    </div>
+                    <div class="mb-3 formList">
+
+                        <label for="date" class="form-label">Select Date:</label>
+                        <input type="date" name="date" id="today" class="form-control" required oninput="clickThis()">
+
+
+                        <div class="invalid-feedback">
+                            Please select a valid date.
+                        </div>
+                    </div>
+                    <div class="mb-3 formList">
+
+                        <label for="time" class="form-label">Time:</label>
+                        <select id="time" name="time" class="form-control" required></select>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    <div class="12">
+                        <button class="btn " type="submit">Submit booking</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <img src="https://images.unsplash.com/photo-1496401615999-6a8623ebe87a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="" srcset="">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+
+
+
+
+
+        function guestAmount() {
+            const nrGuest = document.getElementById('nrGuests').value;
+            if (nrGuest >= 7) {
+                var message = document.createElement("p");
+                message.textContent = "For bookings larger or equal 7 please contact the restaurant";
+                document.body.appendChild(message);
+            }
+        }
+
+
+
+
+        var inputDate = document.getElementById("today");
+        const currentDate = new Date();
+        var now = new Date();
+        const select = document.getElementById("time");
+
+        console.log(currentDate.getDate())
+
+        // Set min and max date for the booking
+        var minDateTime = currentDate.toISOString().slice(0, 10); // Change to date only
+        inputDate.min = minDateTime;
+
+        var maxDate = new Date();
+        maxDate.setDate(maxDate.getDate() + 365); // Allowing booking for the current date only
+        // inputDate.max = maxDate.toISOString().slice(0, 10); // Change to date only
+        var minTime = new Date();
+        minTime.setHours(12, 0, 0);
+        var maxTime = new Date();
+        maxTime.setHours(21, 30, 0);
+        var validTime = new Date(Math.max(minTime)); // Take the maximum of first available time and minimum time
+        while (validTime <= maxTime) {
+            var option = document.createElement("option");
+            var formattedTime = validTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            option.text = formattedTime;
+            option.value = formattedTime;
+            select.add(option);
+            validTime.setMinutes(validTime.getMinutes() + 30);
+        }
+
+
+        function clickThis() {
+
+            const dateString = document.getElementById('today').value;
+
+            const currentDate = new Date();
+            const selectedDate = new Date(dateString);
+            const select = document.getElementById("time");
+
+            select.innerHTML = '';
+            console.log(selectedDate.getDate(), currentDate.getDate())
+            if (currentDate.getDate() < selectedDate.getDate()) {
+                console.log('its future')
+                console.log(currentDate.getDate(), selectedDate.getDate());
+
+                var minTime = new Date();
+                minTime.setHours(12, 0, 0);
+                var maxTime = new Date();
+                maxTime.setHours(21, 30, 0);
+                var validTime = new Date(Math.max(minTime)); // Take the maximum of first available time and minimum time
+                while (validTime <= maxTime) {
+                    var option = document.createElement("option");
+                    var formattedTime = validTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    option.text = formattedTime;
+                    option.value = formattedTime;
+                    select.add(option);
+                    validTime.setMinutes(validTime.getMinutes() + 30); // Increment by 30 minutes
+                }
+            } else if (currentDate.getDate() === selectedDate.getDate()) {
+                console.log('its today')
+                if (currentDate.getHours() >= 21) {
+                    console.log(currentDate.getHours())
+                    var message = document.createElement("p");
+                    message.textContent = "Please call the restaurant to inquire about booking as online booking is unavailable after 21:00.";
+                    document.body.appendChild(message);
+                } else if (currentDate.getHours() >= 20) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(21, 0, 0)
+                    } else {
+                        var message = document.createElement("p");
+                        message.textContent = "Please call the restaurant to inquire about booking as online booking is unavailable after 20:30.";
+                        document.body.appendChild(message);
+                    }
+
+                } else if (currentDate.getHours() >= 19) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(20, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(20, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 18) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(19, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(19, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 17) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(18, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(18, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 16) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(17, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(17, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 15) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(16, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(16, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 14) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(15, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(15, 30, 0)
+                    }
+                } else if (currentDate.getHours() >= 13) {
+                    if (currentDate.getMinutes() < 30) {
+                        var minTime = new Date();
+                        minTime.setHours(14, 30, 0)
+                    } else {
+                        var minTime = new Date();
+                        minTime.setHours(14, 30, 0)
+                    }
+                }
+
+
+
+                var maxTime = new Date();
+                maxTime.setHours(21, 30, 0);
+                var validTime = new Date(Math.max(minTime))
+                while (validTime <= maxTime) {
+                    var option = document.createElement("option");
+                    var formattedTime = validTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    option.text = formattedTime;
+                    option.value = formattedTime;
+                    select.add(option);
+                    validTime.setMinutes(validTime.getMinutes() + 30); // Increment by 30 minutes
+                }
+            }
+
+            // Return the selected date if needed
+            return selectedDate;
+        }
+
+        function showMessage(message) {
+            var messageElement = document.createElement("p");
+            messageElement.textContent = message;
+            document.body.appendChild(messageElement);
+        }
+
+
+
+
+
+
+        // function updateBookingTimes() {
+        //     var select = document.getElementById("time");
+        //     var inputDate = document.getElementById("date");
+        //     var now = new Date();
+
+        //     // Set earliest booking time to 12:00 PM by default
+        //     var minTime = new Date();
+        //     minTime.setHours(12, 0, 0);
+
+        //     // If current time is past 11:31 AM, set the earliest booking time to 1:00 PM
+        //     if (now.getHours() >= 11 && now.getMinutes() >= 31) {
+        //         minTime.setHours(12, 30, 0);
+        //     }
+
+        //     // Set last booking time to 9:30 PM
+        //     var maxTime = new Date();
+        //     maxTime.setHours(21, 30, 0);
+
+        //     // Get current time
+        //     var currentTime = new Date();
+
+        //     // Calculate the first available booking time slot that is 1 hour in advance
+        //     var firstAvailableTime = new Date();
+        //     firstAvailableTime.setHours(currentTime.getHours() + 1, 0, 0); // Add 1 hour to current time
+        //     // if (currentTime.getMinutes() > 30) {
+        //     //     firstAvailableTime.setHours(currentTime.getHours() + 1, 30, 0);
+
+        //     // } else {
+        //     //     firstAvailableTime.setHours(currentTime.getHours() + 1, 0, 0);
+        //     //     console.log(firstAvailableTime)
+        //     // }
+
+        //     // If the first available time is later than the maximum booking time, set it to the maximum booking time
+        //     if (firstAvailableTime > maxTime) {
+        //         firstAvailableTime = maxTime;
+        //     }
+
+        //     // If the current time is later than 20:30, display a message
+        //     if (now.getHours() >= 20 && now.getMinutes() >= 30) {
+        //         var message = document.createElement("p");
+        //         message.textContent = "Please call the restaurant to inquire about booking as online booking is unavailable after 20:30.";
+        //         document.body.appendChild(message);
+        //     }
+
+        //     // Generate time options starting from the first available booking time
+        //     var validTime = new Date(Math.max(firstAvailableTime, minTime)); // Take the maximum of first available time and minimum time
+        //     while (validTime <= maxTime) {
+        //         var option = document.createElement("option");
+        //         var formattedTime = validTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        //         option.text = formattedTime;
+        //         option.value = formattedTime;
+        //         select.add(option);
+        //         validTime.setMinutes(validTime.getMinutes() + 30); // Increment by 30 minutes
+        //     }
+
+        //     // Set min and max date for the booking
+        //     var minDateTime = new Date(now.getTime() + 2 * 60 * 60 * 1000).toISOString().slice(0, 10); // Change to date only
+        //     inputDate.min = minDateTime;
+
+        //     var maxDate = new Date();
+        //     maxDate.setDate(maxDate.getDate() + 360); // Allowing booking for the current date only
+        //     inputDate.max = maxDate.toISOString().slice(0, 10); // Change to date only
+        // }
+
+        // updateBookingTimes();
+
+        // // Update booking times every minute (adjust this interval as needed)
+        // setInterval(updateBookingTimes, 1000);
+
+    </script>

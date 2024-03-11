@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+
+
+nav {
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px white solid;
+    border-top: 1px white solid;
+}
+
+.navBarL {
+    display: flex;
+    text-align: right;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.navBox {
+
+    border: 1px white solid;
+    height: 96.5px;
+    text-align: center;
+    line-height: 92px;
+}
+
+.navBarL a:hover {
+    opacity: 0.6;
+    background-color: whitesmoke;
+    color: black;
+}
+
+
+
+body nav.navbar {
+    background-color: black !important;
+}
+
+.nav-button {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    position: relative;
+    right: 50;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+
+}
+
+.linetwo {
+    width: 70%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+.nav-button.active .line:first-child {
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 4;
+}
+
+.nav-button.active .line:last-child {
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 0;
+    4;
+}
+
+a {
+    z-index: 3;
+    text-decoration: none;
+    color: white;
+}
+
+.dark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: -1;
+    opacity: 0;
+    /* pointer-events: none; */
+    transition: all 0.3s;
+}
+
+.dark.active {
+    opacity: 1;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 0;
+}
+
+.dark.active .overlay-content {
+    opacity: 1;
+    text-align: start;
+    z-index: 0;
+}
+
+.dark .line {
+    width: 0;
+    height: 4px;
+    background-color: white;
+    opacity: 1;
+    margin: 100px 0;
+    transition: width 0.5s ease-out;
+}
+
+.dark.active .line {
+    width: 51.4%;
+    opacity: 1;
+}
+
+.dark.active #map {
+    display: none;
+}
+
+.dark .linetwo {
+    width: 0;
+    height: 4px;
+    background-color: white;
+    margin: 100px 0;
+    transition: width 0.5s ease-out;
+}
+
+.dark.active .linetwo {
+    width: 51.4%;
+}
+
+#overlayNav {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dark img {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 60%;
+    /* Adjust the size as needed */
+    max-height: 60%;
+    /* Adjust the size as needed */
+    opacity: 0.6;
+    transition: opacity 0.5ms, max-width 0.1s, max-height 0.1s;
+}
+
+.dark.active img {
+    opacity: 1;
+}
+
+.dark.active img {
+    transition: ease-in 1s;
+}
+
+.col-10 li {
+    position: absolute;
+    height: 5rem;
+    line-height: 2rem;
+    /* Adjust the line-height to the desired value */
+    top: calc(50% + 2rem);
+    /* Adjust the top value to position them vertically */
+    transform: translateY(-90%);
+}
+
+/* Additional styling for the li elements */
+.col-10 li:nth-child(1) {
+    top: calc(50% - 2rem);
+    /* Adjust the top value for the first li element */
+}
+
+.col-10 li:nth-child(2) {
+    top: 50%;
+    /* Adjust the top value for the second li element */
+}
+
+.col-10 li:nth-child(3) {
+    top: calc(50% + 2rem);
+    /* Adjust the top value for the third li element */
+}
+
+.col-10 li:nth-child(4) {
+    top: calc(50% + 4rem);
+}
+
+
+
+.navbar {
+    height: 6rem;
+}
+
+/* #home {
+    height: 100%;
+} */
+
+
+#mainLogo {
+    font-family: 'Protest Revolution';
+    font-size: 5rem;
+    margin-bottom: 2.5rem;
+
+}
+
+.mainImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    background-image: url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-attachment: fixed;
+    /* This ensures the background image stays fixed */
+    width: 101%;
+    height: 86.7vh;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.925);
+    z-index: 2;
+    font-family: 'Roboto Slab';
+}
+
+.mainImage h2 {
+    line-height: 1.5;
+    max-width: 1000px;
+}
+
+.midSection {
+    height: 25rem;
+    border: solid white 1px;
+}
+
+.col-3.pdf {
+    display: flex;
+    flex-direction: column;
+
+}
+
+button {
+    background-color: black;
+    color: whitesmoke;
+    border: solid 1px #f5f5f5;
+    border-radius: 20px;
+    height: 60px;
+    margin-top: 4rem;
+    z-index: 2;
+}
+
+p {
+    text-align: left;
+    margin-top: 4rem;
+    color: whitesmoke;
+}
+
+#galery {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    height: 70vh;
+    background-size: cover;
+}
+
+#btnGalery {
+    width: 200px;
+    border: solid 1px white;
+    color: white;
+    border-radius: 25px;
+    margin-bottom: 8rem;
+}
+
+#btnGalery:hover {
+    background-color: white;
+    color: black;
+    opacity: 0.4;
+}
+
+footer {
+    height: 300px;
+    border-top: solid 1px white;
+}
+
+#map {
+    height: 200px;
+    width: 350px;
+    margin: 50px 0px 0px 70px;
+}
+
+.footer p {
+    margin-top: 0.1px;
+    line-height: 12px;
+    font-family: 'Roboto Slab';
+}
+
+.footer p:first-child {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* .footer p:nth-child(2) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+} */
+
+#secondFooter {
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+#pdfMenu {
+    font-family: 'Playfair Display';
+}
+
+
+.current-page {
+    /* Add your highlighting styles here, for example: */
+
+    color: rgba(255, 246, 240, 0.4);
+    /* You can customize this further based on your design */
+}
+
+#overlayNav {
+    list-style: none;
+
+}
+
+.menuBtn:hover {
+    background-color: white;
+    color: black;
+    opacity: 0.4;
+}
+
+input {
+    width: 50px;
+}
+
+a.navbar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
