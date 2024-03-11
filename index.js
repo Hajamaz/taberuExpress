@@ -38,7 +38,7 @@ app.use(express.json());
 
 
 
-app.get('/home', (req, res, next) => {
+app.get('/', (req, res, next) => {
     const url = req.originalUrl;
     console.log(req.originalUrl)
     res.render('home', { url, layout: 'layouts/boilerplate' })
