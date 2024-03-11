@@ -113,8 +113,8 @@ app.post('/process_booking', (req, res) => {
     //     }
     // });
 });
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log('listening on 30000')
-})
+    console.log(`Server is running on port ${port}`);
+});
