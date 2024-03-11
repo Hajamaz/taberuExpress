@@ -71,9 +71,10 @@
 
 
     <script>
+        const mapToken = `<%- process.env.TOKEN %>`;
         // Function to initialize Mapbox map
         function initMapbox() {
-            mapboxgl.accessToken = 'pk.eyJ1IjoiaGFqYW1heiIsImEiOiJjbGs1a2w2eTMwMzI4M2VtempxM3cyY3E4In0.N268B_2AcwoJ1grXVTPzMw';
+            mapboxgl.accessToken = 'mapToken';
             const map = new mapboxgl.Map({
                 container: 'map', // container ID
                 center: [-1.2391, 51.7483], // starting position [lng, lat]

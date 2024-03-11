@@ -1,6 +1,13 @@
+// if (process.env.NODE_ENV !== "PRODUCTION") {
+//     require(`dotenv`).config()
+// }
+
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mapBoxToken = process.env.MAPBOX_TOKEN;
+const taberuPass = process.env.TABERU_EMAILPASS;
 
 const engine = require(`ejs-mate`);
 
@@ -53,7 +60,7 @@ app.get('/contact', (req, res) => {
 const axios = require('axios');
 
 
-const API_KEY = 'AIzaSyDUTfqOPfKuKSln9bNBKSZbwdv6_mMkDqc'; // Replace with your actual API key
+const API_KEY = mapBoxToken; // Replace with your actual API key
 
 app.use(express.static('public'));
 
@@ -71,28 +78,7 @@ app.get('/map-data', async (req, res) => {
 
 
 
-// app.post('/process_booking', (req, res) => {
-//     const { name, email, guests } = req.body;
 
-//     // Validate and sanitize inputs if needed
-//     console.log(name, email, guests);
-
-//     // Send email to "manager@taberu.co.uk"
-//     postmarkClient.sendEmail({
-//         "From": "manager@taberu.co.uk",
-//         "To": "manager@taberu.co.uk",
-//         "Subject": "Booking for Taberu resturant",
-//         "TextBody": ` Hello could i book a table  under this name if possivle Name: ${name}\nEmail: ${email}\nNumber of Guests: ${guests}`
-//     })
-//         .then((response) => {
-//             console.log('Email sent successfully:', response);
-//             res.send('Booking submitted successfully!');
-//         })
-//         .catch((error) => {
-//             console.error('Error sending email:', error);
-//             res.status(500).send('Internal Server Error');
-//         });
-// });
 
 
 app.post('/process_booking', (req, res) => {
@@ -106,7 +92,7 @@ app.post('/process_booking', (req, res) => {
     //     service: 'zoho',
     //     auth: {
     //         user: 'manager@taberu.co.uk',
-    //         pass: 'Taberu100!'
+    //         pass: 'taberuPass'
     //     }
     // });
 
@@ -127,8 +113,8 @@ app.post('/process_booking', (req, res) => {
     //     }
     // });
 });
+const port = process.env.PORT || 3000
 
-
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('listening on 30000')
 })
