@@ -181,7 +181,7 @@ a {
     top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60%;
+    max-width: 30%;
     /* Adjust the size as needed */
     max-height: 60%;
     /* Adjust the size as needed */
@@ -331,7 +331,8 @@ footer {
 #map {
     height: 200px;
     width: 350px;
-    margin: 50px 0px 0px 70px;
+    margin: 2rem 0px 0px 3rem;
+    color: black;
 }
 
 .footer p {
@@ -385,4 +386,50 @@ input {
 a.navbar {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+}
+
+.footer {
+    background-color:
+        /* Mapbox background color */
+    ;
+    color:
+        /* Mapbox text color */
+    ;
+    font-family:
+        /* Mapbox font family */
+    ;
+    padding: 20px;
+    /* Adjust as needed */
+    ;
+    border-top: 1px solid #ccc;
+    /* Example border */
+    ;
+}
+
+.footer p {
+    font-size: 14px;
+    /* Adjust as needed */
+    ;
+    margin-bottom: 10px;
+    /* Adjust as needed */
+    ;
+}
+
+.mapboxgl-popup-content {
+    display: flex;
+    color: black;
+    /* Set the text color to black */
+    background: #665959;
+}
+
+.mapboxgl-popup-close-button {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0 3px 0 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: -60px;
 }

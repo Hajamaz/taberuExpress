@@ -104,6 +104,9 @@ function toggleNav() {
 function openPdf() {
     window.open('/TaberuMenu.pdf', '_blank');
 }
+function drinkPdf() {
+    window.open('/TaberuDrinks.pdf', '_blank')
+}
 
 
 
