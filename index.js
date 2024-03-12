@@ -8,6 +8,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const taberuPass = process.env.TABERU_EMAILPASS;
+require('dotenv').config();
 
 const engine = require(`ejs-mate`);
 
@@ -57,24 +58,26 @@ app.get('/contact', (req, res) => {
 })
 
 
+
 const axios = require('axios');
+const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_TOKEN;
 
+app.get('/mapbox-styles', async (req, res) => {
+    try {
+        // Fetch Mapbox styles from Mapbox API
+        const response = await axios.get(`https://api.mapbox.com/styles/v1/mapbox/streets-v11?access_token=${MAPBOX_ACCESS_TOKEN}`);
 
-const API_KEY = mapBoxToken; // Replace with your actual API key
+        // Serve the styles to the client
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching Mapbox styles:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 app.use(express.static('public'));
 
-app.get('/map-data', async (req, res) => {
-    try {
-        const response = await axios.get(
-            `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`
-        );
-        res.send(response.data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error fetching map data');
-    }
-});
+
 
 
 
