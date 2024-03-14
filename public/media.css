@@ -1,0 +1,106 @@
+@media (max-width:1000px) {
+    .navBarL {
+        display: none;
+    }
+
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+        position: relative;
+
+        bottom: 125px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    #mainLogo {
+        font-family: 'Protest Revolution';
+        font-size: 5rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        bottom: 30px;
+    }
+
+
+}
+
+@media (max-width:903px) {
+
+    #mapBox {
+        display: none;
+    }
+}
+
+@media(max-width:733px) {
+    .drinkText {
+        display: none;
+    }
+
+    #btnGalery {
+        position: relative;
+        bottom: 60px;
+    }
+
+    .col-3 {
+
+        flex: 0 0 auto;
+        width: 10rem;
+
+    }
+
+    #bookingImg {
+        display: none;
+    }
+
+}
+
+
+
+@media (max-width:650px) {
+    .navBarL {
+        width: 100%;
+        display: none;
+    }
+
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+        position: relative;
+
+        bottom: 125px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    #mainLogo {
+        font-family: 'Protest Revolution';
+        font-size: 5rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+        bottom: 30px;
+    }
+
+    #darkOverlay.dark {
+        z-index: -2;
+    }
+
+    #mapBox {
+        display: none;
+    }
+
+    #overlayImg {
+        display: none;
+    }
+}
+
+@media(max-width:440px) {
+    div.col-2.smallDisplay {
+        display: none;
+    }
+
+    p {
+        margin-top: 2rem;
+    }
+}

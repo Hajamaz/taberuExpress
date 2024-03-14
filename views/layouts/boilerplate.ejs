@@ -18,15 +18,19 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="media.css">
 </head>
 
 <body>
-    <%- include('../partials/navBar') %>
-        <%- include('../partials/overlay') %>
+    <div class="container-fluid">
+        <%- include('../partials/navBar') %>
+            <%- include('../partials/overlay') %>
 
-            <%- body %>
-                <%- include('../partials/footer') %>
-                    <script src="/scripts.js"></script>
+                <%- body %>
+                    <%- include('../partials/footer') %>
+
+    </div>
+    <script src="/scripts.js"></script>
 </body>
 
 </html>

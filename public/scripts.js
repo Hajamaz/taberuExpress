@@ -2,6 +2,7 @@ function onLoadStyles() {
     if (document.head.baseURI.includes('booking')) {
         var linkElement = document.createElement('link');
         linkElement.rel = 'stylesheet';
+
         linkElement.href = 'https://taberu-24d0ca41bbb9.herokuapp.com/booking.css';
         document.head.appendChild(linkElement);
         console.log(linkElement.href);  // To verify the href of the newly added link
