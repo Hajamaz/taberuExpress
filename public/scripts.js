@@ -1,28 +1,21 @@
 function onLoadStyles() {
     if (document.head.baseURI.includes('booking')) {
-        var linkElement = document.createElement('link');
-        linkElement.rel = 'stylesheet';
-
-        linkElement.href = 'https://taberu-24d0ca41bbb9.herokuapp.com/booking.css';
-        document.head.appendChild(linkElement);
-        console.log(linkElement.href);  // To verify the href of the newly added link
+        // To verify the href of the newly added link
         const bookingHref = document.getElementById('book');
         bookingHref.style.fontWeight = 900;
         bookingHref.style.color = '#f5f5f5'
         bookingHref.style.fontSize = '1.5rem';
 
-    } else if (document.head.baseURI.includes('home')) {
-        const bookingHref = document.getElementById('home');
+    } else if (document.head.baseURI.includes('contact')) {
+        console.log(document.head.baseURI)
+        // To verify the href of the newly added link
+        const bookingHref = document.getElementById('contact');
         bookingHref.style.fontWeight = 900;
         bookingHref.style.color = '#f5f5f5'
         bookingHref.style.fontSize = '1.5rem';
-    } else if (document.head.baseURI.includes('contact')) {
-        var linkElement = document.createElement('link');
-        linkElement.rel = 'stylesheet';
-        linkElement.href = 'http://localhost:3000/contactStyles.css';
-        document.head.appendChild(linkElement);
-        console.log(linkElement.href);  // To verify the href of the newly added link
-        const bookingHref = document.getElementById('contact');
+    } else if (document.head.baseURI.includes('/')) {
+        console.log(document.head.baseURI)
+        const bookingHref = document.getElementById('home');
         bookingHref.style.fontWeight = 900;
         bookingHref.style.color = '#f5f5f5'
         bookingHref.style.fontSize = '1.5rem';
@@ -62,13 +55,19 @@ function toggleNav() {
     if (darkOverlay.classList.contains('active')) {
         let currentPageId = getCurrentPageId(); // Implement this function to get current page ID
         let currentPageNavItem = document.getElementById(currentPageId);
+        let borderLines = document.getElementById('navBtn')
+        borderLines.style.border = '0px';
         // currentPageNavItem.classList.add('current-page');
     } else {
+        let borderLines = document.getElementById('navBtn')
+        borderLines.style.borderTop = 'solid white 5px';
+        borderLines.style.borderBottom = 'solid white 5px';
         // Remove highlighting when dark overlay is not active
         let currentPageNavItem = document.querySelector('.current-page');
         if (currentPageNavItem) {
             currentPageNavItem.classList.remove('current-page');
         }
+
     }
 
     if (navButton.classList.length == 2) {

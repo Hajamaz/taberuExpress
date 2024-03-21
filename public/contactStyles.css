@@ -1,4 +1,42 @@
-h2 {
+.btn.contactBtn {
+    margin-top: 0.3rem;
+    background-color: black;
     color: whitesmoke;
-    font-size: large;
+    border: solid 1px whitesmoke;
+    border-radius: 20px;
+    height: 60px;
+    width: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contactBtn:hover {
+    opacity: 0.6;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.textArea {
+    color: whitesmoke;
+}
+
+.formRow {
+    display: flex;
+    width: 25rem;
+    margin-left: 1rem;
+    z-index: 5;
+    color: whitesmoke;
+    margin-left: 10rem;
+    font-family: 'Roboto Slab';
+}
+
+.tabImg {
+    width: 60%;
+
+}
+
+
+.contactUs {
+    margin: 2rem;
+    color: whitesmoke;
 }

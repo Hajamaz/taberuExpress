@@ -1,7 +1,40 @@
 <%- layout('layouts/boilerplate') %>
-    <div class="container">
-        <header>
-            <h2>We'd love to hear from you! Whether you have a question about our services, want to provide feedback,
-                or simply want to say hello, feel free to get in touch using the information below.</h2>
-        </header>
-    </div>
+    <div class="container-fluid">
+        <h1 class="contactUs">Contact Us: </h1>
+        <div class="row">
+            <div class="col-6">
+                <form class="row g-3 needs-validation formRow" novalidate action="/process_contact" method="post">
+                    <div class="mb-4 formList">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-4 formList">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-4 formList">
+                        <label for="number" class="form-label">Contact number:</label>
+                        <input type="tel" name="number" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <label for="text" class="textArea">Comment</label>
+                    <div class="form-floating">
+                        <textarea class="form-control" name="text" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
+
+                    </div>
+                    <input class="btn contactBtn" type="submit" value="Submit">
+            </div>
+            <div class="col-6">
+                <img src="/taberulog.png" alt="" class="tabImg">
+            </div>
+        </div>
+        </form>

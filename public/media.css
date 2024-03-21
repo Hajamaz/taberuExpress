@@ -1,3 +1,12 @@
+@media(max-width:1084px) {
+    .tabImg {
+        display: none;
+    }
+}
+
+
+
+
 @media (max-width:1000px) {
     .navBarL {
         display: none;
@@ -23,7 +32,11 @@
     }
 
 
+
+
 }
+
+
 
 @media (max-width:903px) {
 
@@ -58,6 +71,59 @@
 
 
 @media (max-width:650px) {
+
+    .row.middleSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .col-3.pdf {
+        order: 2;
+        /* Change the order of the pdf div to display it below */
+
+
+
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 2rem;
+
+    }
+
+    #pdfMenu.col-5 {
+        flex: 0 0 auto;
+        width: 100%;
+
+    }
+
+    .col-5 p {
+        text-align: center;
+    }
+
+    .smallDisplay {
+        display: none;
+    }
+
+    .menus {
+        order: 1;
+        /* Change the order of the menus div to display it above */
+    }
+
+
+
+    .col-1 {
+        display: none;
+    }
+
+    #galery {
+        height: 90vh;
+    }
+
     .navBarL {
         width: 100%;
         display: none;
@@ -93,6 +159,8 @@
     #overlayImg {
         display: none;
     }
+
+
 }
 
 @media(max-width:440px) {
@@ -103,4 +171,47 @@
     p {
         margin-top: 2rem;
     }
+
+    .dark.active.line {
+        width: 51.4%;
+        opacity: 1;
+        margin-bottom: 20px;
+
+    }
+
+    .dark.active .linetwo {
+        width: 100%;
+    }
+
+    .dark.active .line {
+        width: 100%;
+        opacity: 1;
+    }
+
+
+
+    .overlay-content {
+        /* Adjustments to make sure the overlay content is centered */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .btn {
+        margin-bottom: 1rem;
+    }
+
+    button.menuBtn {
+        background-color: black;
+        color: whitesmoke;
+        border: solid 1px #f5f5f5;
+        border-radius: 20px;
+        height: 60px;
+        margin-top: 4rem;
+        z-index: 2;
+        width: 10rem;
+    }
+
 }

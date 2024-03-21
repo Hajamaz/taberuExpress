@@ -67,6 +67,8 @@ body nav.navbar {
     position: relative;
     right: 50;
     cursor: pointer;
+    border-top: 4px white solid;
+    border-bottom: 4px white solid;
     z-index: 3;
 }
 
@@ -186,7 +188,7 @@ a {
 
 .dark img {
     position: absolute;
-    top: 43%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 30%;
@@ -195,6 +197,7 @@ a {
     /* Adjust the size as needed */
     opacity: 0.6;
     transition: opacity 0.5ms, max-width 0.1s, max-height 0.1s;
+    z-index: 3;
 }
 
 .dark.active img {
