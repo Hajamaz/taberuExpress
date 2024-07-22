@@ -1,26 +1,4 @@
-function onLoadStyles() {
-    if (document.head.baseURI.includes('booking')) {
-        // To verify the href of the newly added link
-        const bookingHref = document.getElementById('book');
-        bookingHref.style.fontWeight = 900;
-        bookingHref.style.color = '#f5f5f5'
-        bookingHref.style.fontSize = '1.5rem';
 
-    } else if (document.head.baseURI.includes('contact')) {
-        console.log(document.head.baseURI)
-        // To verify the href of the newly added link
-        const bookingHref = document.getElementById('contact');
-        bookingHref.style.fontWeight = 900;
-        bookingHref.style.color = '#f5f5f5'
-        bookingHref.style.fontSize = '1.5rem';
-    } else if (document.head.baseURI.includes('/')) {
-        console.log(document.head.baseURI)
-        const bookingHref = document.getElementById('home');
-        bookingHref.style.fontWeight = 900;
-        bookingHref.style.color = '#f5f5f5'
-        bookingHref.style.fontSize = '1.5rem';
-    }
-}
 
 
 
@@ -43,72 +21,81 @@ function getCurrentPageId() {
     return currentPageId;
 }
 
-
 function toggleNav() {
     let navButton = document.querySelector('.nav-button');
     let darkOverlay = document.querySelector('#darkOverlay');
-
+    let currentPageId = getCurrentPageId(); // Move this outside the if-else block
 
     navButton.classList.toggle('active');
     darkOverlay.classList.toggle('active');
 
     if (darkOverlay.classList.contains('active')) {
-        let currentPageId = getCurrentPageId(); // Implement this function to get current page ID
-        let currentPageNavItem = document.getElementById(currentPageId);
-        let borderLines = document.getElementById('navBtn')
+
+        let borderLines = document.getElementById('navBtn');
         borderLines.style.border = '0px';
-        // currentPageNavItem.classList.add('current-page');
+
+        // Remove highlighting when dark overlay is not active
+
+        if (currentPageId) {
+            currentPageId.classList.remove('current-page');
+        }
     } else {
-        let borderLines = document.getElementById('navBtn')
+        let borderLines = document.getElementById('navBtn');
         borderLines.style.borderTop = 'solid white 5px';
         borderLines.style.borderBottom = 'solid white 5px';
-        // Remove highlighting when dark overlay is not active
-        let currentPageNavItem = document.querySelector('.current-page');
-        if (currentPageNavItem) {
-            currentPageNavItem.classList.remove('current-page');
-        }
-
     }
 
-    if (navButton.classList.length == 2) {
+    // Optimize the z-index and display properties
+    const map = document.getElementById('map');
+    const darkO = document.getElementById('darkOverlay');
+    const navBtn = document.getElementById('navBtn');
+    const navBoxes = document.getElementsByClassName('navBox');
 
-        const map = document.getElementById('map')
+    if (navButton.classList.contains('active')) {
         map.style.display = 'none';
-        const darkO = document.getElementById('darkOverlay')
         darkO.style.zIndex = 4;
-        const navBtn = document.getElementById('navBtn')
         navBtn.style.zIndex = 5;
-        const navBoxes = document.getElementsByClassName('navBox');
         for (let i = 0; i < navBoxes.length; i++) {
             navBoxes[i].style.display = 'none';
         }
-
     } else {
-        const map = document.getElementById('map')
         map.style.display = 'block';
-        const navBoxes = document.getElementsByClassName('navBox');
         for (let i = 0; i < navBoxes.length; i++) {
             navBoxes[i].style.display = 'inline';
         }
-        const navBtn = document.getElementById('navBtn')
         navBtn.style.zIndex = 1;
-        const darkO = document.getElementById('darkOverlay')
         darkO.style.zIndex = 0;
-
     }
-
-
-}
-
-
-function openPdf() {
-    window.open('/TaberuMenu.pdf', '_blank');
-}
-function drinkPdf() {
-    window.open('/TaberuDrinks.pdf', '_blank')
 }
 
 
 
-console.log(getCurrentPageId())
 
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     var lazyImages = document.querySelectorAll(".lazy-load");
+
+//     function lazyLoad() {
+//         lazyImages.forEach(function (image) {
+//             if (isInViewport(image) && !image.src) {
+//                 image.src = image.dataset.src;
+//             }
+//         });
+//     }
+
+//     // Initial check
+//     lazyLoad();
+
+//     // Listen for scroll event
+//     window.addEventListener("scroll", lazyLoad);
+// });
+
+// // Function to check if an element is in the viewport
+// function isInViewport(elem) {
+//     var bounding = elem.getBoundingClientRect();
+//     return (
+//         bounding.top >= 0 &&
+//         bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+//     );
+// }

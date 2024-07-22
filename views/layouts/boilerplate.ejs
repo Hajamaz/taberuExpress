@@ -17,10 +17,13 @@
         rel="stylesheet">
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
+
+
+    <link rel="stylesheet" href="/contactStyles.css">
+    <link rel="stylesheet" href="/booking.css">
+    <link rel="stylesheet" href="/navStyles.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="stylesheet" href="contactStyles.css">
-    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="/media.css">
 </head>
 
 <body>
@@ -28,12 +31,14 @@
 
     <div class="container-fluid">
         <%- include('../partials/navBar') %>
-            <%- include('../partials/overlay') %>
 
-                <%- body %>
+
+            <%- body %>
+                <%- include('../partials/overlay') %>
                     <%- include('../partials/footer') %>
 
     </div>
+
     <script src="/scripts.js"></script>
 </body>
 

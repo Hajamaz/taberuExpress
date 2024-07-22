@@ -1,19 +1,27 @@
 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
     <div class="row container-fluid" id="navBar">
-        <div class="col-2">
-            <a class="navbar" href="/" id="mainLogo">Taberu</a>
+        <div class="col-2 logoCol">
+            <a href="/">
+                <img src="/logo.png" alt="" srcset="" class="logo img-fluid">
+            </a>
 
         </div>
         <div class="col-9 navBarL">
-            <div class="navBox"> <a class="navbar" href="https://taberuoxford.co.uk/order-now">Order takeway</a>
+            <div class="navBox"> <a class="navbar" href="https://taberuoxford.co.uk/order-now">ORDER TAKEAWAY</a> </div>
+            <div class="navBox"> <a class="navbar" href="/booking">BOOK A TABLE</a></div>
+            <div class="dropdown">
+                <button class="navbar btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">MENUS</button>
+                <ul class="dropdown-menu">
+                    <li class="dropLi"><a class="dropdown-item" href="#">MAIN MENU</a></li>
+                    <li class="dropLi"><a class="dropdown-item" href="#">DRINKS MENU</a></li>
+                    <li class="dropLi"><a class="dropdown-item" href="#">LUNCH MENU</a></li>
+                </ul>
             </div>
-            <div class="navBox"> <a class="navbar" href="/booking">Book a table</a></div>
-
-
+            <div class="navBox"> <a class="navbar" href="/contact">CONTACT US</a></div>
         </div>
 
-
-        <div class=" col-1 collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+        <div class="col-1 collapse navbar-collapse d-flex justify-content-end" id="navButton">
             <div class="nav-button" id="navBtn" onclick="toggleNav()">
                 <div class="line"></div>
                 <div class="line"></div>

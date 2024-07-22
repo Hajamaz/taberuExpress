@@ -1,0 +1,162 @@
+nav {
+
+    height: 69px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* border-bottom: 1px white solid; */
+    border-top: 1px white solid;
+}
+
+.navBarL {
+    display: flex;
+    text-align: right;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.navBox {
+
+    /* border: 1px white solid; */
+    height: 97.5px;
+    text-align: center;
+    line-height: 92px;
+}
+
+.navBarL a:hover {
+    opacity: 0.6;
+    background-color: whitesmoke;
+    color: black;
+}
+
+#overlayNav {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+body nav.navbar {
+    background-color: black !important;
+}
+
+.nav-button {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    position: relative;
+    right: 50;
+    cursor: pointer;
+    border-top: 4px white solid;
+    /* border-bottom: 4px white solid; */
+    z-index: 3;
+
+}
+
+.line {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+
+}
+
+.linetwo {
+    width: 70%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+.nav-button.active .line:first-child {
+    transform: translateY(-50%) rotate(45deg);
+    z-index: 4;
+}
+
+.nav-button.active .line:last-child {
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 0;
+
+}
+
+a {
+    z-index: 3;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar {
+    height: 6rem;
+}
+
+#overlayNav {
+    list-style: none;
+
+}
+
+.dropdown {
+    width: 3rem;
+    padding-left: 15px;
+}
+
+a.navbar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.dropdown-toggle {
+    border: 0px;
+    position: relative;
+
+}
+
+.dropdown button {
+    border-radius: 0;
+
+    padding-bottom: 1px;
+    height: 94%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dropdown-menu.show {
+    display: block;
+    top: 97%;
+    opacity: 0.8;
+}
+
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}

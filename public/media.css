@@ -1,35 +1,24 @@
-@media(max-width:1084px) {
-    .tabImg {
+@media(min-width:1084px) {
+    #navBtn {
         display: none;
     }
+
 }
 
 
 
 
-@media (max-width:1000px) {
+@media (max-width:993px) {
+
+    /* .navBarL {
+        display: none;
+    } */
     .navBarL {
         display: none;
     }
 
-    .nav-button {
-        width: 40px;
-        height: 40px;
-        margin: 10px;
-        position: relative;
 
-        bottom: 125px;
-        cursor: pointer;
-        z-index: 3;
-    }
 
-    #mainLogo {
-        font-family: 'Protest Revolution';
-        font-size: 5rem;
-        margin-bottom: 2.5rem;
-        position: relative;
-        bottom: 30px;
-    }
 
 
 
@@ -49,6 +38,8 @@
     .drinkText {
         display: none;
     }
+
+
 
     #btnGalery {
         position: relative;
@@ -71,6 +62,7 @@
 
 
 @media (max-width:650px) {
+
 
     .row.middleSection {
         display: flex;
@@ -121,7 +113,17 @@
     }
 
     #galery {
-        height: 90vh;
+        height: 90vh auto;
+    }
+
+    .firstPic,
+    .thirdPic {
+        display: none;
+    }
+
+    .menuKanjiRight,
+    .menuKanjiLeft {
+        display: none;
     }
 
     .navBarL {
@@ -129,16 +131,7 @@
         display: none;
     }
 
-    .nav-button {
-        width: 40px;
-        height: 40px;
-        margin: 10px;
-        position: relative;
 
-        bottom: 125px;
-        cursor: pointer;
-        z-index: 3;
-    }
 
     #mainLogo {
         font-family: 'Protest Revolution';
@@ -163,55 +156,106 @@
 
 }
 
-@media(max-width:440px) {
-    div.col-2.smallDisplay {
-        display: none;
-    }
+@media (max-width: 576px) {
 
-    p {
-        margin-top: 2rem;
-    }
-
-    .dark.active.line {
-        width: 51.4%;
-        opacity: 1;
-        margin-bottom: 20px;
-
-    }
-
-    .dark.active .linetwo {
+    /* Adjust input field width for smaller screens */
+    .formRow input[type="text"],
+    .formRow input[type="email"],
+    .formRow input[type="number"],
+    .formRow input[type="date"],
+    .formRow select {
         width: 100%;
     }
 
-    .dark.active .line {
-        width: 100%;
-        opacity: 1;
+    @media(max-width:440px) {
+        div.col-2.smallDisplay {
+            display: none;
+        }
+
+
+
+        .mainImage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+            background-image: url(https://images.unsplash.com/photo-1615361200098-9e630ec29b4e?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-attachment: fixed;
+            /* This ensures the background image stays fixed */
+            width: 100%;
+            height: 86.7vh;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.925);
+            z-index: 2;
+            font-family: 'Roboto Slab';
+        }
+
+
+        p {
+            margin-top: 2rem;
+        }
+
+        .dark.active.line {
+            width: 51.4%;
+            opacity: 1;
+            margin-bottom: 20px;
+
+        }
+
+        .dark.active .linetwo {
+            width: 100%;
+        }
+
+        .dark.active .line {
+            width: 100%;
+            opacity: 1;
+        }
+
+
+
+        .overlay-content {
+            /* Adjustments to make sure the overlay content is centered */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .btn {
+            margin-bottom: 1rem;
+        }
+
+        button.menuBtn {
+            background-color: black;
+            color: whitesmoke;
+            border: solid 1px #f5f5f5;
+            border-radius: 20px;
+            height: 60px;
+            margin-top: 4rem;
+            z-index: 2;
+            width: 10rem;
+        }
+
+
+    }
+}
+
+@media (min-width: 429px) {
+    .logo {
+        z-index: 3;
     }
 
-
-
-    .overlay-content {
-        /* Adjustments to make sure the overlay content is centered */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+    button {
+        z-index: 3;
     }
 
-    .btn {
-        margin-bottom: 1rem;
+    .img-fluid {
+        width: auto;
+        height: auto;
     }
-
-    button.menuBtn {
-        background-color: black;
-        color: whitesmoke;
-        border: solid 1px #f5f5f5;
-        border-radius: 20px;
-        height: 60px;
-        margin-top: 4rem;
-        z-index: 2;
-        width: 10rem;
-    }
-
 }

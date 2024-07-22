@@ -28,6 +28,10 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(express.json());
+app.use('*.css', (req, res, next) => {
+    res.contentType('text/css');
+    next();
+});
 
 
 
@@ -48,6 +52,9 @@ app.get('/orders', (req, res, next) => {
 })
 app.get('/contact', (req, res) => {
     res.render('contact')
+})
+app.get('/menu', (req, res) => {
+    res.render('foodmenu')
 })
 
 
@@ -80,14 +87,15 @@ const validateInputs = (req, res, next) => {
     next();
 };
 
-// Middleware to define validation rules for booking inputs
+// Middleware to define validation rules for booking inputse
 const validateBookingInputs = [
     body('name').trim().escape(),
     body('email').trim().isEmail().normalizeEmail(),
     body('guests').toInt(),
     body('time').trim().escape(),
     body('date').toDate(),
-    validateInputs // Include the validateInputs middleware to validate the inputs
+    // middleware to sanitize inputs
+    validateInputs
 ];
 
 const validateContactInputs = [
@@ -105,8 +113,6 @@ app.post('/process_booking', validateBookingInputs, (req, res) => {
     const { name, email, guests, time, date } = req.body;
     console.log(name, time, email, guests, date);
 
-
-    // Validate and sanitize inputs if needed
 
     const transporter = nodemailer.createTransport({
         service: 'zoho',
@@ -128,9 +134,9 @@ app.post('/process_booking', validateBookingInputs, (req, res) => {
             console.error(error);
             res.status(500).send('Internal Server Error');
         } else {
-            console.log('Email sent: ' + info.response);
+            console.log('Email sent: ' + info.response, name);
 
-            res.render('goodbooking');
+            res.render('goodbooking', { name, time, date });
         }
     });
 });
@@ -162,7 +168,7 @@ app.post('/process_contact', validateContactInputs, (req, res) => {
         }
     });
 })
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3500;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

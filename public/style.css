@@ -20,97 +20,7 @@ body {
 
 
 
-nav {
 
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border-bottom: 1px white solid;
-    border-top: 1px white solid;
-
-}
-
-.navBarL {
-    display: flex;
-    text-align: right;
-    flex-direction: row;
-    justify-content: flex-end;
-    text-align: center;
-}
-
-.navBox {
-
-    border: 1px white solid;
-    height: 96.5px;
-    text-align: center;
-    line-height: 92px;
-}
-
-.navBarL a:hover {
-    opacity: 0.6;
-    background-color: whitesmoke;
-    color: black;
-}
-
-
-
-body nav.navbar {
-    background-color: black !important;
-}
-
-.nav-button {
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-    position: relative;
-    right: 50;
-    cursor: pointer;
-    border-top: 4px white solid;
-    border-bottom: 4px white solid;
-    z-index: 3;
-}
-
-.line {
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    transition: all 0.3s;
-
-}
-
-.linetwo {
-    width: 70%;
-    height: 4px;
-    background-color: white;
-    position: absolute;
-    top: 10%;
-    left: 0;
-    transform: translateY(-50%);
-    transition: all 0.3s;
-}
-
-.nav-button.active .line:first-child {
-    transform: translateY(-50%) rotate(45deg);
-    z-index: 4;
-}
-
-.nav-button.active .line:last-child {
-    transform: translateY(-50%) rotate(-45deg);
-    z-index: 0;
-    4;
-}
-
-a {
-    z-index: 3;
-    text-decoration: none;
-    color: white;
-}
 
 .dark {
     position: fixed;
@@ -122,9 +32,9 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: -1;
+
     opacity: 0;
-    /* pointer-events: none; */
+
     transition: all 0.3s;
 }
 
@@ -141,13 +51,13 @@ a {
     text-align: center;
     opacity: 0;
     transition: opacity 0.5s;
-    z-index: 0;
+
 }
 
 .dark.active .overlay-content {
     opacity: 1;
     text-align: start;
-    z-index: 0;
+
 }
 
 .dark .line {
@@ -180,11 +90,7 @@ a {
     width: 51.4%;
 }
 
-#overlayNav {
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-}
+
 
 .dark img {
     position: absolute;
@@ -197,7 +103,7 @@ a {
     /* Adjust the size as needed */
     opacity: 0.6;
     transition: opacity 0.5ms, max-width 0.1s, max-height 0.1s;
-    z-index: 3;
+
 }
 
 .dark.active img {
@@ -239,22 +145,27 @@ a {
 }
 
 
+.col-1.colImg img {
+    position: absolute;
+    background-size: contain;
+    height: 290px;
+    top: -13%;
+    right: -1%;
+    opacity: 0.8;
 
-.navbar {
-    height: 6rem;
 }
+
 
 /* #home {
     height: 100%;
 } */
 
 
-#mainLogo {
-    font-family: 'Protest Revolution';
-    font-size: 5rem;
-    margin-bottom: 2.5rem;
 
-}
+
+/* .container-fluid {
+    overflow-x: hidden;
+} */
 
 .mainImage {
     display: flex;
@@ -264,32 +175,89 @@ a {
     padding: 0;
     box-sizing: border-box;
     position: relative;
-    background-image: url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(/mainImg.jpeg);
     background-size: cover;
     background-attachment: fixed;
     /* This ensures the background image stays fixed */
-    width: 101%;
+    width: 100%;
     height: 86.7vh;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.925);
-    z-index: 2;
+
     font-family: 'Roboto Slab';
 }
 
-.mainImage h2 {
+/* Add a pseudo-element for overlay */
+.mainImage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adjust opacity as needed */
+
+}
+
+.row.mainImage h2 {
+    text-align: center;
+    color: white;
+    /* Set text color to white */
     line-height: 1.5;
     max-width: 1000px;
+    position: relative;
+    /* Ensure text stays above the overlay */
+
+    /* Ensure text stays above the overlay */
 }
 
-.midSection {
-    height: 25rem;
-    border: solid white 1px;
+.middleSection {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.col-3.pdf {
+
+.menuPart.contain {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
 
+
+
+}
+
+
+
+.menuPart button {
+    width: 300px;
+    margin-bottom: 1rem;
+}
+
+.contain>img {
+    width: auto;
+    height: 55vh;
+    opacity: 0;
+    /* Initially somewhat transparent */
+
+    animation: fade-In 1s linear forwards;
+    /* Animation duration and fill mode */
+    animation-timeline: view(500px 216px);
+    /* animation-range: contain; */
+}
+
+@keyframes fade-In {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 button {
@@ -299,25 +267,25 @@ button {
     border-radius: 20px;
     height: 60px;
     margin-top: 4rem;
-    z-index: 2;
+
+    width: 100px;
 }
 
-p {
-    text-align: left;
-    margin-top: 4rem;
-    color: whitesmoke;
-}
+
 
 #galery {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-image: url(https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    height: 70vh;
-    background-size: cover;
+    /* -imagebackground: url(https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); */
+    height: 100vh;
+    /* background-size: cover; */
+    /* background-position-y: 32%; */
+
+
 }
 
 #btnGalery {
@@ -394,36 +362,29 @@ input {
     width: 50px;
 }
 
-a.navbar {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+
+.footer {
+
+    padding: 20px;
+    /* Adjust as needed */
+
+    border-top: 1px solid #ccc;
+    /* Example border */
+
 }
 
 .footer {
-    background-color:
-        /* Mapbox background color */
-    ;
-    color:
-        /* Mapbox text color */
-    ;
-    font-family:
-        /* Mapbox font family */
-    ;
-    padding: 20px;
-    /* Adjust as needed */
-    ;
-    border-top: 1px solid #ccc;
-    /* Example border */
-    ;
-}
-
-.footer p {
     font-size: 14px;
     /* Adjust as needed */
     ;
     margin-bottom: 10px;
     /* Adjust as needed */
     ;
+    color: whitesmoke;
+}
+
+#tHead {
+    margin-bottom: 4rem;
 }
 
 .mapboxgl-popup-content {
@@ -443,4 +404,82 @@ a.navbar {
     position: absolute;
     right: 0;
     top: -60px;
+}
+
+.bookingConfirm {
+    color: whitesmoke;
+    font-family: 'Roboto Slab';
+}
+
+.bookingConfirmP {
+    margin-top: 0.5rem;
+}
+
+.ficon {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+
+}
+
+@media (max-width: 576px) {
+
+    /* Adjust input field width for smaller screens */
+    .formRow input[type="text"],
+    .formRow input[type="email"],
+    .formRow input[type="number"],
+    .formRow input[type="date"],
+    .formRow select {
+        width: 100%;
+    }
+}
+
+.col-6.foodmenu img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.galeryContain>img {
+    width: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 5rem;
+    height: 19rem;
+    opacity: 0;
+    /* Initially somewhat transparent */
+
+    animation: fade-In 1s linear forwards;
+    /* Animation duration and fill mode */
+    animation-timeline: view(500px 216px);
+    /* animation-range: contain; */
+}
+
+
+
+.logo {
+    position: absolute;
+    height: 10vh auto;
+    /* Adjust the height as needed */
+    top: 2px;
+    /* Adjust the top position */
+    left: 20px;
+    /* Adjust the left position */
+    z-index: 2;
+}
+
+
+.menuKanjiLeft {
+    width: auto;
+    height: auto;
+    opacity: 0.55;
+}
+
+.menuKanjiRight {
+    width: auto;
+    height: auto;
+    opacity: 0.55;
+}
+
+.secondPic {
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
